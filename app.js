@@ -63,8 +63,10 @@ const createSilButon = () => {
 
       uzunluk = uzunluk -1 ; 
       document.querySelector("#toplam").innerHTML = uzunluk;
-      tamamla = tamamla - 1;
-      document.querySelector("#tamamlanan").innerHTML = tamamla;
+      if (tamamla > 0){
+        tamamla = tamamla - 1;
+        document.querySelector("#tamamlanan").innerHTML = tamamla;
+      }
     };
   });
 };
