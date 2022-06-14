@@ -60,13 +60,16 @@ const createSilButon = () => {
        // ekrandan direk silmek, ama listede hala durur
       sil.parentNode.remove();
       console.log(liste);
-
+      
+      // total kisminin 1 er azalmasi icin
       uzunluk = uzunluk -1 ; 
       document.querySelector("#toplam").innerHTML = uzunluk;
-      if (tamamla > 0){
+
+      // checked kisminda da 1 azaltmak icin (eger varsa)
+      if (sil.parentNode.classList.contains("checked")) {
         tamamla = tamamla - 1;
         document.querySelector("#tamamlanan").innerHTML = tamamla;
-      }
+     }
     };
   });
 };
@@ -75,7 +78,8 @@ createTikButon = () => {
   const TikButon = document.querySelectorAll(".fa-check");
   TikButon.forEach((Tik) => {
     Tik.onclick = () => {
-      Tik.parentNode.classList.toggle("checked");
+      Tik.parentNode.classList.toggle("checked"); // tiklandiginda class"i ekle ve cikar. sirayla
+
 
       if (Tik.parentNode.classList.contains("checked")) {
          tamamla = tamamla + 1;
