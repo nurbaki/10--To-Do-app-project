@@ -61,7 +61,8 @@ header {
 }
 
 #todo-button:hover {
-  opacity: 0.3;
+  background-color:#d43bc0;
+  /* opacity: 0.3; */
 }
 
 .todos {
