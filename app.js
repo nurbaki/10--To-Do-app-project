@@ -1,9 +1,9 @@
 
 let liste = [];
 let uzunluk = 0;
-let tamamla = 0
+let tamamla = 0;
 const listeUl = document.querySelector("#todo-ul");
-// ekranda yazan liste lar
+// ekranda yazan liste ler
 const listeInput = document.querySelector("#todo-input");
 const listeButton = document.querySelector("#todo-button");
 
@@ -22,7 +22,17 @@ document.querySelector("#todo-button").addEventListener("click", () => {
     document.querySelector("#toplam").innerHTML = uzunluk;
     document.querySelector("#tamamlanan").innerHTML = tamamla;
   }
+  listeInput.value="";
+  listeInput.focus();
+
 });
+// enter'a basarak da liste girmek icin
+listeInput.onkeydown=(tuslar)=>{
+  //* eger 13 e tusuna (enter'a ) basildiysa
+  if(tuslar.keyCode===13){
+    document.querySelector("#todo-button").click();
+  }
+}
 
 const showListe = () => {
   //! add e basıldığında hafızaya task eklenecek, ekrana basmak üzere buraya gelecek,
@@ -42,8 +52,7 @@ const showListe = () => {
   createTikButon(); 
 
 
-  listeInput.value = "";
-
+  listeInput.value ="";
   listeInput.focus();
 };
 
@@ -52,14 +61,8 @@ const createSilButon = () => {
   const silButon = document.querySelectorAll(".fa-trash");
   silButon.forEach((sil) => {
     sil.onclick = () => {
-      liste.splice(sil, 1);
-      //!bu listeden siler showListeyi çağırarak ekrana bastırırız
-
-      //!alternatif yol showListeyi çağırmak  (ekrana hepsini tekrar bastırmak) yerine,
-      //  (çünkü bu yolla silince liste silinmiyor, siz ekrana listeyi bas deyince silinenler geri gelmiş oluyor)
-       // ekrandan direk silmek, ama listede hala durur
-      sil.parentNode.remove();
-      console.log(liste);
+      liste.splice(sil, 1); // backend kismi icin
+      sil.parentNode.remove();  // parentElement de yazilabilir
       
       // total kisminin 1 er azalmasi icin
       uzunluk = uzunluk -1 ; 
@@ -83,12 +86,10 @@ createTikButon = () => {
 
       if (Tik.parentNode.classList.contains("checked")) {
          tamamla = tamamla + 1;
-         document.querySelector("#tamamlanan").innerHTML = tamamla;
-
       } else {
         tamamla = tamamla - 1;
-        document.querySelector("#tamamlanan").innerHTML = tamamla;
-      } 
+      }
+      document.querySelector("#tamamlanan").innerHTML = tamamla; 
    
     };
   });
