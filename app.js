@@ -1,4 +1,3 @@
-
 let liste = [];
 let uzunluk = 0;
 let tamamla = 0;
@@ -122,3 +121,7 @@ createTikButon = () => {
 // $('#MyElement').toggleClass('MyClass');
           
 
+// //? Enter button is pressed (farkli bir yöntem)
+// todoInput.addEventListener("keydown", (e) => {
+//   if (e.key === "Enter") todoButton.click();
+// });
